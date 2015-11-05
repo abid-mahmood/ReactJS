@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Owner-Ownee</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.2/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.2/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
+  </head>
+  <body>
+    <div id="content"></div>
+    <script type="text/babel">
+      var Avatar = React.createClass({
+        render: function(){
+          return (
+            <div>
+              <ProfileLink data={this.props.data} />
+            </div>
+          );
+        }
+      });
+
+      var ProfilePicture = React.createClass({
+        render: function(){
+          return (
+            <img src={ "https://graph.facebook.com/" } />
+          );
+        }
+      });
+
+      var ProfileLink = React.createClass({
+        render: function(){
+          return (
+            <ol>
+              { 
+                this.props.data.map(function(country){
+                  return <li key={country}> {country} </li>;
+                }) 
+              }
+            </ol>
+          );
+        }
+      });
+
+      var data = ["Australia", "America", "New Zealand", "Pakistan", "China", "India", "Palestine", "Israel", "South Africa", "England", "Italy", "Lithuinia"];
+
+      ReactDOM.render(
+        <Avatar data={data} />,
+        document.getElementById("content")
+      );
+
+
+    </script>
